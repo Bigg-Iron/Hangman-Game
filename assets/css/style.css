@@ -1,0 +1,83 @@
+/* User CSS */
+
+body {
+    background-color: #ffffff;
+
+}
+
+div.container-fluid {
+    text-align: center;
+}
+
+.jumbotron {
+    padding: 3%;
+    margin: 3%;
+    background-color: #E6F3F2;
+}
+
+h1, h2 {
+    text-align: center;
+    padding: 2%;
+}
+
+/* A line to separate content */
+hr {
+    border-top: 1px solid #aebfbe;
+    border-top-width: 1px;
+    border-top-style: solid;
+    border-top-color: #aebfbe;
+}
+
+
+div.row {
+    margin: 2%; 
+}
+
+
+/* Card Body */
+div.card-body {
+    flex: 1 1 auto;
+    flex-grow: 1;
+    flex-shrink: 1;
+    flex-basis: auto;
+    padding: 1.25rem;
+    padding-top: 1.25rem;
+    padding-right: 1.25rem;
+    padding-bottom: 1.25rem;
+    padding-left: 1.25rem;
+    text-align: center;
+    padding: 5%;
+}
+
+div.card {
+    position: relative;
+    display: -ms-flexbox;
+    display: flex;
+    -ms-flex-direction: column;
+    flex-direction: column;
+    min-width: 0;
+    word-wrap: break-word;
+    background-color: #fff;
+    background-clip: border-box;
+    border: 1px solid #aebfbe;
+    border-top-color: #aebfbe;
+    border-top-style: solid;
+    border-top-width: 1px;
+    border-right-color: #aebfbe;
+    border-right-style: solid;
+    border-right-width: 1px;
+    border-bottom-color: #aebfbe;
+    border-bottom-style: solid;
+    border-bottom-width: 1px;
+    border-left-color: #aebfbe;
+    border-left-style: solid;
+    border-left-width: 1px;
+    border-image-source: initial;
+    border-image-slice: initial;
+    border-image-width: initial;
+    border-image-outset: initial;
+    border-image-repeat: initial;
+    border-radius: .25rem;
+    margin: 2%;
+    padding: 2%;
+}
