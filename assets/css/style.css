@@ -81,3 +81,13 @@ div.card {
     margin: 2%;
     padding: 2%;
 }
+
+.btn-default {
+    margin: 2%;
+    padding: 1%;
+}
+
+img {
+    height: 800px;
+    width: 600px;
+}
