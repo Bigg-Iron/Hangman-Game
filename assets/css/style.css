@@ -2,6 +2,8 @@
 
 body {
     background-color: #ffffff;
+    background-image: url(../images/birdsBackground.jpg);
+    background-repeat: repeat-x;
 
 }
 
@@ -12,7 +14,8 @@ div.container-fluid {
 .jumbotron {
     padding: 3%;
     margin: 3%;
-    background-color: #E6F3F2;
+    background-color: #EDF8F7;
+    border: 1px solid #aebfbe
 }
 
 h1, h2 {
@@ -57,7 +60,7 @@ div.card {
     flex-direction: column;
     min-width: 0;
     word-wrap: break-word;
-    background-color: #fff;
+    background-color: #ECF7F6;
     background-clip: border-box;
     border: 1px solid #aebfbe;
     border-top-color: #aebfbe;

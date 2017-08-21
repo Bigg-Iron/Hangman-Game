@@ -1,71 +1,118 @@
-// array of birds and their letters... Pigeon, Owl, Woodpecker, Finch, Parrot, Sparrow, Gulls, Goose, Hummingbird.
-var birds = ["Pigeon", "Owl", "Woodpecker", "Finch", "Parrot", "Sparrow", "Seagull", "Goose", "Hummingbird"]
+// TODO: Create "Hint" button that shows image of current bird.
 
-// Generates a random bird from the bird array and logs it to the console
-var birds = birds[Math.floor(Math.random() * birds.length)];
-console.log(birds);
+var wordOptions = ["pigeon", "owl", "woodpecker", "finch", "parrot", "sparrow", "seagull", "goose", "hummingbird"];
+
+var selectedWord = "";
+var lettersInWord = [];
+var numBlanks = 0;
+var blanksAndSuccesses = [];
+var wrongLetters = [];
+
+
+var winCount = 0;
+var lossCount = 0;
+var guessesLeft = 5;
 
 
 
-// Clicking the hint button reveals the word
-window.onload = function () {
-    document.getElementById("show").onclick = function () {
-        if (birds == "Owl") {
-            document.getElementById("birdImage").innerHTML="<img src='assets/images/owl.jpg'/>";
-        }
-        if (birds == "Pigeon") {
-            document.getElementById("birdImage").innerHTML="<img src='assets/images/pigeon.jpg'/>";
-        }
-        if (birds == "Woodpecker") {
-            document.getElementById("birdImage").innerHTML="<img src='assets/images/woodpecker.jpg'/>";
-        }
-        if (birds == "Finch") {
-            document.getElementById("birdImage").innerHTML="<img src='assets/images/finch.jpg'/>";
-        }
-        if (birds == "Parrot") {
-            document.getElementById("birdImage").innerHTML="<img src='assets/images/parrot.jpg'/>";
-        }
-        if (birds == "Sparrow") {
-            document.getElementById("birdImage").innerHTML="<img src='assets/images/sparrow.jpg'/>";
-        }
-        if (birds == "Seagull") {
-            document.getElementById("birdImage").innerHTML="<img src='assets/images/seagull.jpg'/>";
-        }
-        if (birds == "Goose") {
-            document.getElementById("birdImage").innerHTML="<img src='assets/images/goose.jpg'/>";
-        }
-        if (birds == "Hummingbird") {
-            document.getElementById("birdImage").innerHTML="<img src='assets/images/hummingbird.jpg'/>";
-        }
 
-        currentWord.innerHTML = birds;
-        
-        
+function startGame() {
+    selectedWord = wordOptions[Math.floor(Math.random() * wordOptions.length)];
+    lettersInWord = selectedWord.split("");
+    numBlanks = lettersInWord.length;
+
+
+
+
+
+    guessesLeft = 5;
+    wrongLetters = [];
+    blanksAndSuccesses = [];
+
+
+
+    for (var i = 0; i < numBlanks; i++) {
+        blanksAndSuccesses.push("_");
+    }
+
+
+    document.getElementById("wordToGuess").innerHTML = blanksAndSuccesses.join("  ");
+    document.getElementById("numGuesses").innerHTML = guessesLeft;
+    document.getElementById("winCounter").innerHTML = winCount;
+    document.getElementById("lossCounter").innerHTML = lossCount;
+
+
+
+    console.log(selectedWord);
+    console.log(lettersInWord);
+    console.log(numBlanks);
+    console.log(blanksAndSuccesses);
+}
+
+function checkLetters(letter) {
+
+
+    var isLetterInWord = false;
+    for (var i = 0; i < numBlanks; i++) {
+        if (selectedWord[i] == letter) {
+            isLetterInWord = true;
+        }
+    }
+
+    if (isLetterInWord) {
+        for (var i = 0; i < numBlanks; i++) {
+            if (selectedWord[i] == letter) {
+                blanksAndSuccesses[i] = letter;
+            }
+        }
+    } else {
+        wrongLetters.push(letter);
+        guessesLeft--;
+    }
+
+
+    console.log(blanksAndSuccesses);
+
+}
+
+function roundComplete() {
+    console.log("Win Count: " + winCount + " | Loss Count: " + lossCount + " | Guesses Left" + guessesLeft);
+
+
+    document.getElementById("numGuesses").innerHTML = guessesLeft;
+    document.getElementById("wordToGuess").innerHTML = blanksAndSuccesses.join("  ");
+    document.getElementById("wrongGuesses").innerHTML = wrongLetters.join("  ");
+
+
+    if (lettersInWord.toString() == blanksAndSuccesses.toString()) {
+        winCount++;
+        alert("You Won!");
+
+
+        document.getElementById("winCounter").innerHTML = winCount;
+
+        startGame();
+    } else if (guessesLeft == 0) {
+        lossCount++;
+        alert("You lost!");
+
+
+        document.getElementById("lossCounter").innerHTML = lossCount;
+
+        startGame();
     }
 }
 
 
+startGame();
 
 
-var guesses = [];
 
-// Prints user key presses
-document.onkeypress = function (evt) {
-    evt = evt || window.event;
-    var charCode = evt.keyCode || evt.which;
-    var charStr = String.fromCharCode(charCode);
-    document.getElementById("pressed").innerHTML = (charStr);
+document.onkeyup = function (event) {
+    var letterGuessed = String.fromCharCode(event.keyCode).toLowerCase();
+    checkLetters(letterGuessed);
+    roundComplete();
 
-    console.log(charStr);
 
-    guesses.push(charStr);
-    document.getElementById("pressed").innerHTML = guesses;
-
-    
-    if (charStr == currentWord) {
-        console.log(currentWord.append);
-        document.getElementById("currentWord").innerHTML = charStr;
-        
-    }
-
+    console.log(letterGuessed);
 };

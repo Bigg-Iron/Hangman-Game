@@ -17,8 +17,6 @@
         crossorigin="anonymous">
     <!-- User css -->
     <link href="assets/css/style.css" type="text/css" rel="stylesheet">
-    <!-- javaScript Components Below -->
-    <script type="text/javascript" src="assets/scripts/script.js"></script>
 
 </head>
 
@@ -37,17 +35,15 @@
     <!-- Main game area -->
     <div class="container-fluid">
         <div class="row">
-                <div class="card">
-                    <div class="card-body">
-                        <h3>Current Word: </h3>
-                        <h3 id="currentWord"> _ _ _ _ _ _ _ _ _</h3>
-                        <button type="button" class="btn btn-lg btn-default" id="show">Show</button>
+            <div class="card">
+                <div class="card-body">
+                    <h3>Current Word: </h3>
+                    <h3 id="wordToGuess"> </h3>
+                    <!-- <button type="button" class="btn btn-lg btn-default" id="showBird">Hint</button> -->
+                    <!-- <div id="birdImage"> </div> -->
 
-                        <div id="birdImage">    </div>
-
-                        
-                    </div>
                 </div>
+            </div>
         </div>
     </div>
 
@@ -60,7 +56,7 @@
                 <div class="card">
                     <div class="card-body">
                         <h4>Letters already guessed: </h4>
-                        <h4 id="pressed">none.</h4>
+                        <h4 id="wrongGuesses"> </h4>
                     </div>
                 </div>
             </div>
@@ -69,16 +65,31 @@
                 <div class="card">
                     <div class="card-body">
                         <h4>Guesses remaining: </h4>
-                        <h4 id="score"> 10 </h4>
-
+                        <h4 id="numGuesses"> </h4>
                     </div>
                 </div>
             </div>
         </div>
-    </div>
+
+        <div class="container-fluid">
+            <div class="row">
+                <div class="card">
+                    <div class="card-body">
+                        <h4>Losses: </h4>
+                        <h4 id="lossCounter"> </h4>
+                        <br>
+                        <h4> Wins: </h4>
+                        <h4 id="winCounter"> </h4>
+                    </div>
+                </div>
+            </div>
+        </div>
 
 
 
+
+        <!-- Javascript -->
+        <script type="text/javascript" src="assets/scripts/script.js"></script>
 
 </body>
 
